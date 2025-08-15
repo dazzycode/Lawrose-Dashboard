@@ -103,12 +103,12 @@ const Product = () => {
           <table className="w-full border-collapse border border-gray-200">
             <thead>
               <tr className="bg-gray-50">
-                <th className="border p-2">Thumbnail</th>
-                <th className="border p-2">Name</th>
-                <th className="border p-2">Price</th>
-                <th className="border p-2">Status</th>
-                <th className="border p-2">No. in stock</th>
-                <th className="border p-2">Action</th>
+                <th className="border text-xs md:text-sm   p-2">Thumbnail</th>
+                <th className="border text-xs md:text-sm  p-2">Name</th>
+                <th className="border text-xs md:text-sm  p-2">Price</th>
+                <th className="border text-xs md:text-sm   p-2">Status</th>
+                <th className="border text-xs md:text-sm   p-2">No. in stock</th>
+                <th className="border  text-xs md:text-sm  p-2">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -117,11 +117,11 @@ const Product = () => {
                   <td className="border p-2 text-center">
                     <img src={p.thumbnail} alt={p.name} className="w-12 h-12" />
                   </td>
-                  <td className="border p-2">{p.name}</td>
-                  <td className="border p-2">{p.price}</td>
-                  <td className="border p-2">{p.status}</td>
-                  <td className="border p-2">{p.stock}</td>
-                  <td className="border p-2 text-center">
+                  <td className="border text-xs md:text-sm  p-2">{p.name}</td>
+                  <td className="border text-xs md:text-sm  p-2">{p.price}</td>
+                  <td className="border text-xs md:text-sm  p-2">{p.status}</td>
+                  <td className="border text-xs md:text-sm  p-2">{p.stock}</td>
+                  <td className="border text-xs md:text-sm  p-2 text-center">
                     <button
                       onClick={() => handleEdit(index)}
                       className="border rounded px-3 py-1 bg-gray-100 hover:bg-gray-200"

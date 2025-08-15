@@ -98,20 +98,20 @@ const Order = () => {
               <table className="min-w-full border-collapse">
                 <thead>
                   <tr className="border-b">
-                    <th className="p-2 text-left">Order ID</th>
-                    <th className="p-2 text-left">Date</th>
-                    <th className="p-2 text-left">Customer</th>
-                    <th className="p-2 text-left">Total Amount</th>
-                    <th className="p-2 text-left">Status</th>
+                    <th className="p-2 text-left text-xs md:text-sm ">Order ID</th>
+                    <th className="p-2 text-left text-xs md:text-sm ">Date</th>
+                    <th className="p-2 text-left  text-xs md:text-sm  ">Customer</th>
+                    <th className="p-2 text-left text-xs md:text-sm ">Total Amount</th>
+                    <th className="p-2 text-left text-xs md:text-sm ">Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {paginate(ordersData, orderPage).map((order, idx) => (
                     <tr key={idx} className="border-b">
-                      <td className="p-2">{order.id}</td>
-                      <td className="p-2">{order.date}</td>
-                      <td className="p-2">{order.customer}</td>
-                      <td className="p-2">{order.amount}</td>
+                      <td className="p-2 text-xs md:text-sm  ">{order.id}</td>
+                      <td className="p-2 text-xs md:text-sm ">{order.date}</td>
+                      <td className="p-2 text-xs md:text-sm  ">{order.customer}</td>
+                      <td className="p-2 text-xs md:text-sm ">{order.amount}</td>
                       <td className={`p-2 ${statusColors[order.status]}`}>{order.status}</td>
                     </tr>
                   ))}
@@ -154,23 +154,23 @@ const Order = () => {
               <table className="min-w-full border-collapse">
                 <thead>
                   <tr className="border-b">
-                    <th className="p-2 text-left">Return ID</th>
-                    <th className="p-2 text-left">Order ID</th>
-                    <th className="p-2 text-left">Date</th>
-                    <th className="p-2 text-left">Customer</th>
-                    <th className="p-2 text-left">Reason</th>
-                    <th className="p-2 text-left">Status</th>
-                    <th className="p-2 text-left">Action</th>
+                    <th className="p-2 text-xs md:text-sm text-left">Return ID</th>
+                    <th className="p-2 text-left text-xs md:text-sm ">Order ID</th>
+                    <th className="p-2 text-left text-xs md:text-sm ">Date</th>
+                    <th className="p-2 text-left text-xs md:text-sm  ">Customer</th>
+                    <th className="p-2 text-left text-xs md:text-sm ">Reason</th>
+                    <th className="p-2 text-left text-xs md:text-sm ">Status</th>
+                    <th className="p-2 text-left text-xs md:text-sm ">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {paginate(returnsData, returnPage).map((item, idx) => (
                     <tr key={idx} className="border-b">
-                      <td className="p-2">{item.returnId}</td>
-                      <td className="p-2">{item.orderId}</td>
-                      <td className="p-2">{item.date}</td>
-                      <td className="p-2">{item.customer}</td>
-                      <td className="p-2">{item.reason}</td>
+                      <td className="p-2 text-xs md:text-sm ">{item.returnId}</td>
+                      <td className="p-2 text-xs md:text-sm ">{item.orderId}</td>
+                      <td className="p-2 text-xs md:text-sm ">{item.date}</td>
+                      <td className="p-2 text-xs md:text-sm ">{item.customer}</td>
+                      <td className="p-2 text-xs md:text-sm ">{item.reason}</td>
                       <td
                         className={`p-2 ${item.status === "Declined" ? "text-red-500" : ""}`}
                       >

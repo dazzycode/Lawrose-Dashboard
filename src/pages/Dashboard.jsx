@@ -126,7 +126,7 @@ const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-white flex-col md:flex-row">
+    <div className="flex min-h-screen w-full overflow-x-hidden bg-white flex-col md:flex-row">
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div
@@ -170,17 +170,25 @@ const Dashboard = () => {
           {/* Sales chart card */}
           <Card className="p-2">
             <div className="flex items-start justify-between mb-3">
-              <div>
-                <div className="text-sm text-black font-bold">Sales chart</div>
-                <div className="flex items-center gap-2">
-                  <div className="font-semibold text-xs">{totalSalesLabel}</div>
-                  <span className="text-emerald-600 ml-2 text-xs font-semibold">
-                    {salesChangeLabel} <span className="text-black text-xs font-normal">vs yesterday</span>
-                  </span>
-                </div>
-              </div>
-              <Tabs value={salesRange} onChange={setSalesRange} />
-            </div>
+             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+  {/* Title & Sales Info */}
+  <div>
+    <div className="text-sm sm:text-base text-black font-bold">Sales chart</div>
+    <div className="flex flex-wrap items-center gap-1 sm:gap-2">
+      <div className="font-semibold text-xs sm:text-sm">{totalSalesLabel}</div>
+      <span className="text-emerald-600 text-xs sm:text-sm font-semibold">
+        {salesChangeLabel}
+        <span className="text-black font-normal ml-1">vs yesterday</span>
+      </span>
+    </div>
+  </div>
+
+  {/* Tabs */}
+  <div className="w-full sm:w-auto flex justify-start sm:justify-end">
+    <Tabs value={salesRange} onChange={setSalesRange} />
+  </div>
+</div>
+</div>
 
             {/* area "cloud" chart */}
             <div className="h-[180px]">
@@ -211,7 +219,7 @@ const Dashboard = () => {
           </Card>
 
           {/* Best selling products */}
-          <Card className="p-4">
+          <Card className="p-2">
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-semibold">Best selling products</h3>
               <button className="text-xs border-b text-gray-600 hover:text-black">View all</button>
@@ -230,10 +238,10 @@ const Dashboard = () => {
                     <img src={p.img} alt={p.name} className="w-full h-full object-cover" />
                   </div>
                   <div className="flex-1">
-                    <div className="font-medium text-sm">{p.name}</div>
+                    <div className="font-medium text-xs md:text-sm">{p.name}</div>
                   </div>
-                  <div className="w-28 text-right text-sm">{p.revenue}</div>
-                  <div className="w-10 text-right text-sm">{p.units}</div>
+                  <div className="w-28 text-right text-xs md:text-sm">{p.revenue}</div>
+                  <div className="w-10 text-right text-xs md:text-sm">{p.units}</div>
                 </li>
               ))}
             </ul>
@@ -243,20 +251,27 @@ const Dashboard = () => {
         {/* right column (lg: span 7) */}
         <div className="lg:col-span-7 space-y-4 md:space-y-6">
           {/* New customers line chart */}
-          <Card className="p-4">
+          <Card className="p-2">
             <div className="flex items-start justify-between mb-3">
-             <div className="flex items-center gap-3">
-  <div className="text-xl md:text-3xl font-bold">{newCustomersToday}</div>
-  
-  <div className="text-gray-500 text-sm">
-    New <br /> customers
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+  {/* Stats Section */}
+  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+    <div className="text-lg sm:text-xl md:text-3xl font-bold">{newCustomersToday}</div>
+    
+    <div className="text-gray-500 text-xs sm:text-sm leading-tight">
+      New <br /> customers
+    </div>
+    
+    <div className="text-emerald-600 text-xs sm:text-sm font-semibold">
+      {newCustChange}
+    </div>
   </div>
-  
-  <div className="text-emerald-600 ml-8 text-xs font-semibold">{newCustChange}</div>
-</div>
 
-              <Tabs value={newCustRange} onChange={setNewCustRange} />
-            </div>
+  {/* Tabs Section */}
+  <div className="w-full sm:w-auto flex justify-start sm:justify-end">
+    <Tabs value={newCustRange} onChange={setNewCustRange} />
+  </div>
+</div></div>
 
             <div className="h-[200px]">
               <ResponsiveContainer width="100%" height="100%">
@@ -280,27 +295,37 @@ const Dashboard = () => {
 
           {/* Customers activity pie */}
           <Card className="p-4">
-            <div className="flex items-center justify-between mb-2">
-              <h3 className="font-bold">Customers activity</h3>
-              <div className="flex items-center gap-2">
-                {/* left / right arrows */}
-                <button
-                  onClick={() => setPieIndex((p) => (p - 1 + pieViews.length) % pieViews.length)}
-                  className="w-8 h-8 rounded-md border hover:bg-gray-50"
-                  aria-label="Previous"
-                >
-                  ‹
-                </button>
-                <button
-                  onClick={() => setPieIndex((p) => (p + 1) % pieViews.length)}
-                  className="w-8 h-8 rounded-md border hover:bg-gray-50"
-                  aria-label="Next"
-                >
-                  ›
-                </button>
-                <Tabs value={activityRange} onChange={setActivityRange} />
-              </div>
-            </div>
+           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2 sm:gap-4">
+  {/* Title */}
+  <h3 className="font-bold text-sm sm:text-base">Customers activity</h3>
+
+  {/* Controls */}
+  <div className="flex flex-wrap items-center gap-2">
+    {/* Left / Right Arrows */}
+    <button
+      onClick={() => setPieIndex((p) => (p - 1 + pieViews.length) % pieViews.length)}
+      className="w-8 h-8 rounded-md border hover:bg-gray-50 flex items-center justify-center"
+      aria-label="Previous"
+    >
+      ‹
+    </button>
+    <button
+      onClick={() => setPieIndex((p) => (p + 1) % pieViews.length)}
+      className="w-8 h-8 rounded-md border hover:bg-gray-50 flex items-center justify-center"
+      aria-label="Next"
+    >
+      ›
+    </button>
+
+    {/* Scrollable Tabs on Mobile */}
+    <div className="w-full sm:w-auto overflow-x-auto">
+      <div className="flex sm:block min-w-max">
+        <Tabs value={activityRange} onChange={setActivityRange} />
+      </div>
+    </div>
+  </div>
+</div>
+
 
             <div className="flex items-center justify-center h-[220px]">
               <ResponsiveContainer width="100%" height="100%">

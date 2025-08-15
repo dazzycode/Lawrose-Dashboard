@@ -146,53 +146,57 @@ export default function Customer() {
             </div>
 
             {/* Chart */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm flex-1">
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <div className="text-xl md:text-3xl font-bold">{newCustomersToday}</div>
-                  <div className="text-gray-500 text-sm">
-                    New <br /> customers
-                  </div>
-                  <div className="text-emerald-600 ml-8 text-xs font-semibold">{newCustChange}</div>
-                </div>
-              </div>
+          <div className="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-sm flex-1">
+  {/* Top Stats */}
+  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 gap-2">
+    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+      <div className="text-lg sm:text-xl md:text-3xl font-bold">{newCustomersToday}</div>
+      <div className="text-gray-500 text-xs sm:text-sm leading-tight">
+        New <br /> customers
+      </div>
+      <div className="text-emerald-600 text-xs sm:text-sm font-semibold">
+        {newCustChange}
+      </div>
+    </div>
+  </div>
 
-              {/* Tabs + Buttons */}
-              <div className="flex items-center justify-between mb-4">
-                {/* Tabs */}
-                <div className="flex gap-4">
-                  {["days", "week", "monthly", "year"].map((tab) => (
-                    <button
-                      key={tab}
-                      onClick={() => { setActiveTab(tab); setNewCustRange(tab); }}
-                      className={`capitalize px-3 py-1 rounded-md text-sm ${
-                        activeTab === tab
-                          ? "bg-black text-white"
-                          : "bg-gray-200 text-gray-700"
-                      }`}
-                    >
-                      {tab}
-                    </button>
-                  ))}
-                </div>
+  {/* Tabs + Buttons */}
+  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+    {/* Scrollable Tabs */}
+    <div className="w-full sm:w-auto overflow-x-auto">
+      <div className="flex gap-2 min-w-max">
+        {["days", "week", "monthly", "year"].map((tab) => (
+          <button
+            key={tab}
+            onClick={() => { setActiveTab(tab); setNewCustRange(tab); }}
+            className={`capitalize px-3 py-1 rounded-md text-sm ${
+              activeTab === tab
+                ? "bg-black text-white"
+                : "bg-gray-200 text-gray-700"
+            }`}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+    </div>
 
-                {/* Action buttons */}
-                <div className="flex gap-2">
-                  <button
-                    onClick={handleExport}
-                    className="bg-black text-white px-3 py-1 rounded-md text-sm"
-                  >
-                    Export list
-                  </button>
-                  <button
-                    onClick={handleFilter}
-                    className="border px-3 py-1 rounded-md text-sm"
-                  >
-                    Filter
-                  </button>
-                </div>
-              </div>
-
+    {/* Action Buttons */}
+    <div className="flex gap-2 w-full sm:w-auto justify-end mb-5  sm:justify-end">
+      <button
+        onClick={handleExport}
+        className="bg-black text-white px-3 py-1 rounded-md text-sm"
+      >
+        Export list
+      </button>
+      <button
+        onClick={handleFilter}
+        className="border px-3 py-1 rounded-md text-sm"
+      >
+        Filter
+      </button>
+    </div>
+  </div>
               {/* Chart */}
               <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={chartDataSets[activeTab]}>

@@ -146,25 +146,27 @@ export default function Edit() {
     <div className="min-h-screen bg-white text-black">
       {/* Top Bar */}
       <div className="mx-auto max-w-5xl px-5 pt-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-[28px] font-semibold tracking-tight">Add a new Product</h1>
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              className="h-9 rounded-md border border-gray-300 px-4 text-sm hover:bg-gray-50"
-              onClick={() => console.log("Save as draft", form)}
-            >
-              Save as draft
-            </button>
-            <button
-              type="button"
-              className="h-9 rounded-md border border-gray-300 px-4 text-sm hover:bg-gray-50"
-              onClick={() => window.history.back()}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
+         <div className="w-full flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
+  {/* Heading */}
+  <h1 className="text-sm sm:text-base md:text-xl font-semibold text-center sm:text-left break-words">
+    Add a new Discount code
+  </h1>
+
+  {/* Buttons */}
+  <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto justify-end sm:justify-normal">
+    <button
+      className="flex-shrink px-3 sm:px-6 py-2 sm:py-3 bg-gray-200 rounded w-auto min-w-0 text-center text-xs md:text-sm"
+    >
+      Save as draft
+    </button>
+
+    <button
+      className="px-4 py-2 bg-gray-200 rounded w-auto min-w-0"
+    >
+      Cancel
+    </button>
+  </div>
+</div>
       </div>
 
       <form

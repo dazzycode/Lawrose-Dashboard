@@ -33,13 +33,28 @@ export default function EditCode() {
         <Navbar onMenuClick={() => setSidebarOpen(true)} />
     <div className="p-6 bg-white min-h-screen">
       {/* Header */}
-      <div className="w-full flex justify-between items-center mb-6">
-        <h1 className="text-xl font-semibold">Add a new Discount code</h1>
-        <div className="space-x-2">
-          <button className="px-4 py-2 bg-gray-200 rounded">Save as draft</button>
-          <button className="px-4 py-2 bg-gray-200 rounded">Cancel</button>
-        </div>
-      </div>
+      <div className="w-full flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
+  {/* Heading */}
+  <h1 className="text-sm sm:text-base md:text-xl font-semibold text-center sm:text-left break-words">
+    Add a new Discount code
+  </h1>
+
+  {/* Buttons */}
+  <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto justify-end sm:justify-normal">
+    <button
+      className="flex-shrink px-3 sm:px-6 py-2 sm:py-3 bg-gray-200 rounded w-auto min-w-0 text-center text-xs md:text-sm"
+    >
+      Save as draft
+    </button>
+
+    <button
+      className="px-4 py-2 bg-gray-200 rounded w-auto min-w-0"
+    >
+      Cancel
+    </button>
+  </div>
+</div>
+
 
       {/* Form */}
       <div className="w-full bg-white p-6 rounded shadow-sm border">
